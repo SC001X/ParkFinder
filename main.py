@@ -18,13 +18,14 @@ Requests per minute: 100
 Requests per day: 1000
 """
 
-# Using your own API key is preferable
-api_key = os.environ["GOOGLE_API_KEY"]
+#Use your own API KEY
+api_key = "API KEY HERE"
 
 
 def address_input():
     user_input = input("Enter an Address or Zip Code: ").replace(" ", "%20")
     return user_input
+
 
 
 # JSON --> Python | Finds Info about user's location
@@ -35,7 +36,6 @@ def convert_user_location(address):
     content = urllib.request.urlopen(data_url).read().decode()
     data = json.loads(content)
     return data
-
 
 # Finds Latitude and Longitude based on provided info
 def get_user_location(map_data):
