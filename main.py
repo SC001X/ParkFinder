@@ -18,8 +18,8 @@ Requests per minute: 100
 Requests per day: 1000
 """
 
-#Use your own API KEY
-api_key = "API KEY HERE"
+#Use your own API Key
+api_key = os.environ["GOOGLE_API_KEY"]
 
 
 def address_input():
