@@ -1,31 +1,23 @@
-import os
-from math import sin, cos, sqrt, atan2, radians
-import urllib.request
 import json
+import urllib.request
+from math import sin, cos, sqrt, atan2, radians
 
 """
 This program is designed to find the nearest park for whatever address/zipcode, etc, you enter
 ---------------------------------------------------------------------
-I'm limiting myself to the Python's Standard Library for this personal project.
----------------------------------------------------------------------
 Using Google Maps Platform API - https://developers.google.com/maps
 ---------------------------------------------------------------------
-Geocoding API and Places API was used in the making of this program
+The Geocoding and Places APIS was used in the making of this program
 ---------------------------------------------------------------------
-Quota Limit for both APIS:
-Requests per minute per user: 10 
-Requests per minute: 100
-Requests per day: 1000
 """
 
 #Use your own API Key
-api_key = os.environ["GOOGLE_API_KEY"]
+api_key = "" #API KEY HERE
 
 
 def address_input():
     user_input = input("Enter an Address or Zip Code: ").replace(" ", "%20")
     return user_input
-
 
 
 # JSON --> Python | Finds Info about user's location
@@ -44,6 +36,7 @@ def get_user_location(map_data):
         location["latitude_of_address"] = data['geometry']['location']['lat']
         location["longitude_of_address"] = data['geometry']['location']['lng']
     return location
+
 
 
 # JSON --> Python | Finds info about Parks in the vivacity of the radius specified
@@ -120,7 +113,6 @@ def display_data():
               f"and is approximately {str(round(each_dict['miles'], 2))} "
               f"miles away with a user rating of {str(each_dict['user_rating'])} by "
               f"{str(each_dict['user_ratings_total'])} user(s)\n")
-
 
 def main():
     display_data()
